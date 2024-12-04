@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.12.3 on linux)" generated="2024-12-04T17:06:58.244940" rpa="false" schemaversion="5">
+<suite id="s1" name="RobotFrameworkDemo" source="/home/ubuntu/Workspace/RobotFrameworkDemo">
+<suite id="s1-s1" name="Test" source="/home/ubuntu/Workspace/RobotFrameworkDemo/test.robot">
+<test id="s1-s1-t1" name="Execute Add Transaction" line="7">
+<kw name="Set User" owner="MxLibrary">
+<arg>erd1uv40ahysflse896x4ktnh6ecx43u7cmy9wnxnvcyp7deg299a4sq6vaywa</arg>
+<doc>Sets the user for subsequent transactions by providing their wallet address.</doc>
+<status status="PASS" start="2024-12-04T17:06:58.369773" elapsed="0.135034"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-12-04T17:06:58.505932" level="INFO">${args} = ['42']</msg>
+<var>${args}</var>
+<arg>42</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-12-04T17:06:58.505367" elapsed="0.000809"/>
+</kw>
+<kw name="Execute Add" owner="MxLibrary">
+<msg time="2024-12-04T17:06:58.641763" level="INFO">${hashes} = (2, {'0': '6aab9819c9e93135c987b2af1c207b7abb19e62d84f1b324b66510c997c45ecf', '1': '13d861475df488d008d83aafa472ef4565cd186b45998b4749486dbb07f5f1bf'})</msg>
+<var>${hashes}</var>
+<arg>${args}</arg>
+<doc>Deploys and executes the 'add' function of the smart contract.</doc>
+<status status="PASS" start="2024-12-04T17:06:58.506552" elapsed="0.135549"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-12-04T17:06:58.643671" level="INFO">Transaction hashes: (2, {'0': '6aab9819c9e93135c987b2af1c207b7abb19e62d84f1b324b66510c997c45ecf', '1': '13d861475df488d008d83aafa472ef4565cd186b45998b4749486dbb07f5f1bf'})</msg>
+<arg>Transaction hashes: ${hashes}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-12-04T17:06:58.642803" elapsed="0.001562"/>
+</kw>
+<doc>Deploy and execute the `add` function of the smart contract.</doc>
+<status status="PASS" start="2024-12-04T17:06:58.369047" elapsed="0.275919"/>
+</test>
+<status status="PASS" start="2024-12-04T17:06:58.257409" elapsed="0.389586"/>
+</suite>
+<status status="PASS" start="2024-12-04T17:06:58.246871" elapsed="0.402171"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="RobotFrameworkDemo">RobotFrameworkDemo</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Test">RobotFrameworkDemo.Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
