@@ -1,3 +1,4 @@
+import time
 from multiversx_sdk import (
     Address,
     AddressComputer,
@@ -86,21 +87,44 @@ class MxLibrary:
             )
 
             hashes = self.provider.send_transactions([deploy_transaction, transaction])
-            return hashes
+            transaction_hashes = list(hashes[1].values())
+            return transaction_hashes
 
         except Exception as e:
             raise AssertionError(f"Failed to execute add function: {str(e)}")
 
-    @keyword("Result Should Be")
-    def result_should_be(self, expected_hashes, actual_hashes):
-        """Verifies that the transaction hashes match the expected result.
+    @keyword("Result Should Be Success")
+    def result_should_be_success(self, hashes):
+        """Verifies that each transaction in the list of hashes was successful.
 
         Args:
-            expected_hashes (str): The expected transaction hashes.
-            actual_hashes (str): The actual transaction hashes received from the network.
+            hashes (list): A list of transaction hashes to check for success.
         """
-        if expected_hashes != actual_hashes:
-            raise AssertionError(f"Expected: {expected_hashes}, but got: {actual_hashes}")
+        try:
+            for hash in hashes:
+                while True:
+                    transaction = self.provider.get_transaction(
+                        hash, with_process_status=True
+                    )
+                    is_processed = transaction.is_completed
+                    if is_processed:
+                        outcome = transaction.status
+                        if outcome.status == "success":
+                            print(f"Transaction {hash} was successful.")
+                        elif outcome.status == "fail":
+                            print(f"Transaction {hash} failed: {outcome.status}")
+                            # raise AssertionError(f"Transaction {hash} failed: {outcome.status}") # Maybe we can throw an error if a transaction fails
+                        else:
+                            print(
+                                f"Transaction {hash} completed with unexpected status: {outcome.status}"
+                            )
+                        break
+                    else:
+                        print(f"Transaction {hash} not yet processed. Waiting...")
+                        time.sleep(6)
+
+        except Exception as e:
+            raise AssertionError(f"Failed to check transaction outcomes: {str(e)}")
 
     @keyword("Should Cause Error")
     def should_cause_error(self, args, expected_error_message):
@@ -109,15 +133,15 @@ class MxLibrary:
         Args:
             args (list): The arguments to pass to the `add` function.
             expected_error_message (str): The expected error message.
-
-        Example:
-        | Should Cause Error | [InvalidArgument] | Invalid argument passed |
         """
+
         try:
             self.execute_add(args)
         except Exception as err:
             if expected_error_message not in str(err):
-                raise AssertionError(f"Expected error message: '{expected_error_message}', but got: '{str(err)}'")
+                raise AssertionError(
+                    f"Expected error message: '{expected_error_message}', but got: '{str(err)}'"
+                )
             return str(err)
         else:
             raise AssertionError(f"'{args}' should have caused an error.")

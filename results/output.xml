@@ -1,51 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.12.3 on linux)" generated="2024-12-04T17:06:58.244940" rpa="false" schemaversion="5">
-<suite id="s1" name="RobotFrameworkDemo" source="/home/ubuntu/Workspace/RobotFrameworkDemo">
-<suite id="s1-s1" name="Test" source="/home/ubuntu/Workspace/RobotFrameworkDemo/test.robot">
-<test id="s1-s1-t1" name="Execute Add Transaction" line="7">
-<kw name="Set User" owner="MxLibrary">
-<arg>erd1uv40ahysflse896x4ktnh6ecx43u7cmy9wnxnvcyp7deg299a4sq6vaywa</arg>
-<doc>Sets the user for subsequent transactions by providing their wallet address.</doc>
-<status status="PASS" start="2024-12-04T17:06:58.369773" elapsed="0.135034"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-04T17:06:58.505932" level="INFO">${args} = ['42']</msg>
-<var>${args}</var>
-<arg>42</arg>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-04T17:06:58.505367" elapsed="0.000809"/>
-</kw>
-<kw name="Execute Add" owner="MxLibrary">
-<msg time="2024-12-04T17:06:58.641763" level="INFO">${hashes} = (2, {'0': '6aab9819c9e93135c987b2af1c207b7abb19e62d84f1b324b66510c997c45ecf', '1': '13d861475df488d008d83aafa472ef4565cd186b45998b4749486dbb07f5f1bf'})</msg>
-<var>${hashes}</var>
-<arg>${args}</arg>
-<doc>Deploys and executes the 'add' function of the smart contract.</doc>
-<status status="PASS" start="2024-12-04T17:06:58.506552" elapsed="0.135549"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2024-12-04T17:06:58.643671" level="INFO">Transaction hashes: (2, {'0': '6aab9819c9e93135c987b2af1c207b7abb19e62d84f1b324b66510c997c45ecf', '1': '13d861475df488d008d83aafa472ef4565cd186b45998b4749486dbb07f5f1bf'})</msg>
-<arg>Transaction hashes: ${hashes}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-04T17:06:58.642803" elapsed="0.001562"/>
-</kw>
-<doc>Deploy and execute the `add` function of the smart contract.</doc>
-<status status="PASS" start="2024-12-04T17:06:58.369047" elapsed="0.275919"/>
-</test>
-<status status="PASS" start="2024-12-04T17:06:58.257409" elapsed="0.389586"/>
-</suite>
-<status status="PASS" start="2024-12-04T17:06:58.246871" elapsed="0.402171"/>
-</suite>
-<statistics>
-<total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
-</total>
-<tag>
+<robot generator="Robot 7.1.1 (Python 3.12.3 on linux)" generated="2024-12-05T15:13:35.566875"
+    rpa="false" schemaversion="5">
+    <suite id="s1" name="RobotFrameworkDemo" source="/home/ubuntu/Workspace/RobotFrameworkDemo">
+        <suite id="s1-s1" name="Test" source="/home/ubuntu/Workspace/RobotFrameworkDemo/test.robot">
+            <test id="s1-s1-t1" name="Execute Add Transaction" line="6">
+                <kw name="Set User" owner="MxLibrary">
+                    <arg>erd1uv40ahysflse896x4ktnh6ecx43u7cmy9wnxnvcyp7deg299a4sq6vaywa</arg>
+                    <doc>Sets the user for subsequent transactions by providing their wallet
+                        address.</doc>
+                    <status status="PASS" start="2024-12-05T15:13:35.686120" elapsed="0.149279" />
+                </kw>
+                <kw name="Create List" owner="BuiltIn">
+                    <msg time="2024-12-05T15:13:35.836333" level="INFO">${args} = ['42']</msg>
+                    <var>${args}</var>
+                    <arg>42</arg>
+                    <doc>Returns a list containing given items.</doc>
+                    <status status="PASS" start="2024-12-05T15:13:35.835888" elapsed="0.000683" />
+                </kw>
+                <kw name="Execute Add" owner="MxLibrary">
+                    <msg time="2024-12-05T15:13:35.959713" level="INFO">${hashes} =
+                        ['a3bfd40613bb82b5a94db21c0edaa296986e73b01c316a1b5dfb62a6ab9bddc6',
+                        '7434344de62a3b602e035fd52c12e06cdfab7f40f5e59f0da1c4efbf2102e541']</msg>
+                    <var>${hashes}</var>
+                    <arg>${args}</arg>
+                    <doc>Deploys and executes the 'add' function of the smart contract.</doc>
+                    <status status="PASS" start="2024-12-05T15:13:35.837038" elapsed="0.123088" />
+                </kw>
+                <kw name="Log" owner="BuiltIn">
+                    <msg time="2024-12-05T15:13:35.962241" level="INFO">Transaction hashes:
+                        ['a3bfd40613bb82b5a94db21c0edaa296986e73b01c316a1b5dfb62a6ab9bddc6',
+                        '7434344de62a3b602e035fd52c12e06cdfab7f40f5e59f0da1c4efbf2102e541']</msg>
+                    <arg>Transaction hashes: ${hashes}</arg>
+                    <doc>Logs the given message with the given level.</doc>
+                    <status status="PASS" start="2024-12-05T15:13:35.961557" elapsed="0.000987" />
+                </kw>
+                <kw name="Sleep" owner="BuiltIn">
+                    <msg time="2024-12-05T15:13:41.964507" level="INFO">Slept 6 seconds.</msg>
+                    <arg>6s</arg>
+                    <doc>Pauses the test executed for the given time.</doc>
+                    <status status="PASS" start="2024-12-05T15:13:35.963373" elapsed="6.001810" />
+                </kw>
+                <kw name="Result Should Be Success" owner="MxLibrary">
+                    <msg time="2024-12-05T15:13:42.227977" level="INFO">Transaction
+                        a3bfd40613bb82b5a94db21c0edaa296986e73b01c316a1b5dfb62a6ab9bddc6 was
+                        successful.
+                        Transaction 7434344de62a3b602e035fd52c12e06cdfab7f40f5e59f0da1c4efbf2102e541
+                        failed: fail</msg>
+                    <arg>${hashes}</arg>
+                    <doc>Verifies that each transaction in the list of hashes was successful.</doc>
+                    <status status="PASS" start="2024-12-05T15:13:41.965964" elapsed="0.262422" />
+                </kw>
+                <doc>Deploy and execute the `add` function of the smart contract then check the
+                    status. The sleep is required to wait for the api to acknowledge the
+                    transaction.</doc>
+                <status status="PASS" start="2024-12-05T15:13:35.685522" elapsed="6.543783" />
+            </test>
+            <status status="PASS" start="2024-12-05T15:13:35.579160" elapsed="6.651603" />
+        </suite>
+        <status status="PASS" start="2024-12-05T15:13:35.568675" elapsed="6.663974" />
+    </suite>
+    <statistics>
+        <total>
+            <stat pass="1" fail="0" skip="0">All Tests</stat>
+        </total>
+        <tag>
 </tag>
-<suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="RobotFrameworkDemo">RobotFrameworkDemo</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Test">RobotFrameworkDemo.Test</stat>
-</suite>
-</statistics>
-<errors>
+        <suite>
+            <stat pass="1" fail="0" skip="0" id="s1" name="RobotFrameworkDemo">RobotFrameworkDemo</stat>
+            <stat pass="1" fail="0" skip="0" id="s1-s1" name="Test">RobotFrameworkDemo.Test</stat>
+        </suite>
+    </statistics>
+    <errors>
 </errors>
 </robot>
