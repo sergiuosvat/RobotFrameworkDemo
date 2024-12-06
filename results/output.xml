@@ -1,75 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.12.3 on linux)" generated="2024-12-05T15:13:35.566875"
-    rpa="false" schemaversion="5">
-    <suite id="s1" name="RobotFrameworkDemo" source="/home/ubuntu/Workspace/RobotFrameworkDemo">
-        <suite id="s1-s1" name="Test" source="/home/ubuntu/Workspace/RobotFrameworkDemo/test.robot">
-            <test id="s1-s1-t1" name="Execute Add Transaction" line="6">
-                <kw name="Set User" owner="MxLibrary">
-                    <arg>erd1uv40ahysflse896x4ktnh6ecx43u7cmy9wnxnvcyp7deg299a4sq6vaywa</arg>
-                    <doc>Sets the user for subsequent transactions by providing their wallet
-                        address.</doc>
-                    <status status="PASS" start="2024-12-05T15:13:35.686120" elapsed="0.149279" />
-                </kw>
-                <kw name="Create List" owner="BuiltIn">
-                    <msg time="2024-12-05T15:13:35.836333" level="INFO">${args} = ['42']</msg>
-                    <var>${args}</var>
-                    <arg>42</arg>
-                    <doc>Returns a list containing given items.</doc>
-                    <status status="PASS" start="2024-12-05T15:13:35.835888" elapsed="0.000683" />
-                </kw>
-                <kw name="Execute Add" owner="MxLibrary">
-                    <msg time="2024-12-05T15:13:35.959713" level="INFO">${hashes} =
-                        ['a3bfd40613bb82b5a94db21c0edaa296986e73b01c316a1b5dfb62a6ab9bddc6',
-                        '7434344de62a3b602e035fd52c12e06cdfab7f40f5e59f0da1c4efbf2102e541']</msg>
-                    <var>${hashes}</var>
-                    <arg>${args}</arg>
-                    <doc>Deploys and executes the 'add' function of the smart contract.</doc>
-                    <status status="PASS" start="2024-12-05T15:13:35.837038" elapsed="0.123088" />
-                </kw>
-                <kw name="Log" owner="BuiltIn">
-                    <msg time="2024-12-05T15:13:35.962241" level="INFO">Transaction hashes:
-                        ['a3bfd40613bb82b5a94db21c0edaa296986e73b01c316a1b5dfb62a6ab9bddc6',
-                        '7434344de62a3b602e035fd52c12e06cdfab7f40f5e59f0da1c4efbf2102e541']</msg>
-                    <arg>Transaction hashes: ${hashes}</arg>
-                    <doc>Logs the given message with the given level.</doc>
-                    <status status="PASS" start="2024-12-05T15:13:35.961557" elapsed="0.000987" />
-                </kw>
-                <kw name="Sleep" owner="BuiltIn">
-                    <msg time="2024-12-05T15:13:41.964507" level="INFO">Slept 6 seconds.</msg>
-                    <arg>6s</arg>
-                    <doc>Pauses the test executed for the given time.</doc>
-                    <status status="PASS" start="2024-12-05T15:13:35.963373" elapsed="6.001810" />
-                </kw>
-                <kw name="Result Should Be Success" owner="MxLibrary">
-                    <msg time="2024-12-05T15:13:42.227977" level="INFO">Transaction
-                        a3bfd40613bb82b5a94db21c0edaa296986e73b01c316a1b5dfb62a6ab9bddc6 was
-                        successful.
-                        Transaction 7434344de62a3b602e035fd52c12e06cdfab7f40f5e59f0da1c4efbf2102e541
-                        failed: fail</msg>
-                    <arg>${hashes}</arg>
-                    <doc>Verifies that each transaction in the list of hashes was successful.</doc>
-                    <status status="PASS" start="2024-12-05T15:13:41.965964" elapsed="0.262422" />
-                </kw>
-                <doc>Deploy and execute the `add` function of the smart contract then check the
-                    status. The sleep is required to wait for the api to acknowledge the
-                    transaction.</doc>
-                <status status="PASS" start="2024-12-05T15:13:35.685522" elapsed="6.543783" />
-            </test>
-            <status status="PASS" start="2024-12-05T15:13:35.579160" elapsed="6.651603" />
-        </suite>
-        <status status="PASS" start="2024-12-05T15:13:35.568675" elapsed="6.663974" />
-    </suite>
-    <statistics>
-        <total>
-            <stat pass="1" fail="0" skip="0">All Tests</stat>
-        </total>
-        <tag>
+<robot generator="Robot 7.1.1 (Python 3.12.3 on linux)" generated="2024-12-06T18:05:43.031621" rpa="false" schemaversion="5">
+<suite id="s1" name="RobotFrameworkDemo" source="/home/ubuntu/Workspace/RobotFrameworkDemo">
+<suite id="s1-s1" name="Test" source="/home/ubuntu/Workspace/RobotFrameworkDemo/test.robot">
+<test id="s1-s1-t1" name="Deploy Adder Contract, Execute Add Function, Deploy Factorial Contract, Execute Factorial Function" line="12">
+<kw name="Set User" owner="MxAddLibrary">
+<arg>${mike_address}</arg>
+<doc>Sets the user for subsequent transactions by providing their wallet address.</doc>
+<status status="PASS" start="2024-12-06T18:05:43.150259" elapsed="0.589258"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-12-06T18:05:43.741649" level="INFO">${args} = ['2']</msg>
+<var>${args}</var>
+<arg>2</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-12-06T18:05:43.740903" elapsed="0.001016"/>
+</kw>
+<kw name="Deploy Adder" owner="MxAddLibrary">
+<msg time="2024-12-06T18:05:50.252148" level="INFO">${adder_contract_address} = &lt;multiversx_sdk.core.address.Address object at 0x72fcefc81970&gt;</msg>
+<var>${adder_contract_address}</var>
+<arg>${args}</arg>
+<doc>Deploys the smart contract to the blockchain.</doc>
+<status status="PASS" start="2024-12-06T18:05:43.742886" elapsed="6.509764"/>
+</kw>
+<kw name="Execute Add" owner="MxAddLibrary">
+<msg time="2024-12-06T18:05:56.506855" level="INFO">${hash} = a57c08a30ad52aaed4678079e4e4d2aef1e6a41e01732389a115a5e008808859</msg>
+<msg time="2024-12-06T18:05:56.507270" level="INFO">${Sum} = [4]</msg>
+<var>${hash}</var>
+<var>${Sum}</var>
+<arg>${args}</arg>
+<arg>${adder_contract_address}</arg>
+<doc>Executes the 'add' function of the smart contract.</doc>
+<status status="PASS" start="2024-12-06T18:05:50.253495" elapsed="6.253954"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-12-06T18:05:56.508551" level="INFO">Transaction hash: a57c08a30ad52aaed4678079e4e4d2aef1e6a41e01732389a115a5e008808859</msg>
+<arg>Transaction hash: ${hash}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-12-06T18:05:56.507992" elapsed="0.000802"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-12-06T18:05:56.510383" level="INFO">Sum: [4]</msg>
+<arg>Sum: ${Sum}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-12-06T18:05:56.509811" elapsed="0.000810"/>
+</kw>
+<kw name="Result Should Be Success" owner="MxAddLibrary">
+<msg time="2024-12-06T18:05:56.635383" level="INFO">Transaction a57c08a30ad52aaed4678079e4e4d2aef1e6a41e01732389a115a5e008808859 was successful.</msg>
+<arg>${hash}</arg>
+<doc>Verifies that each transaction in the list of hashes was successful.</doc>
+<status status="PASS" start="2024-12-06T18:05:56.510935" elapsed="0.124813"/>
+</kw>
+<kw name="Set User" owner="MxFactorialLibrary">
+<arg>${mike_address}</arg>
+<doc>Sets the user for subsequent transactions by providing their wallet address.</doc>
+<status status="PASS" start="2024-12-06T18:05:56.636684" elapsed="0.114548"/>
+</kw>
+<kw name="Deploy Factorial" owner="MxFactorialLibrary">
+<msg time="2024-12-06T18:06:02.902102" level="INFO">${factorial_contract_address} = &lt;multiversx_sdk.core.address.Address object at 0x72fcef4479b0&gt;</msg>
+<var>${factorial_contract_address}</var>
+<doc>Deploys the smart contract to the blockchain.</doc>
+<status status="PASS" start="2024-12-06T18:05:56.751843" elapsed="6.150672"/>
+</kw>
+<kw name="Execute Factorial" owner="MxFactorialLibrary">
+<msg time="2024-12-06T18:06:09.034619" level="INFO">Transaction hash: 60064f716c05e17a41d5b16580593594eb442ef55c971fe054905b52b52640a3</msg>
+<msg time="2024-12-06T18:06:09.035237" level="INFO">${hash_factorial} = 60064f716c05e17a41d5b16580593594eb442ef55c971fe054905b52b52640a3</msg>
+<var>${hash_factorial}</var>
+<arg>${Sum}</arg>
+<arg>${factorial_contract_address}</arg>
+<doc>Deploys and executes the 'factorial' function of the smart contract.</doc>
+<status status="PASS" start="2024-12-06T18:06:02.903489" elapsed="6.131946"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-12-06T18:06:09.036657" level="INFO">Transaction hash: 60064f716c05e17a41d5b16580593594eb442ef55c971fe054905b52b52640a3</msg>
+<arg>Transaction hash: ${hash_factorial}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-12-06T18:06:09.036080" elapsed="0.000814"/>
+</kw>
+<kw name="Result Should Be Success" owner="MxFactorialLibrary">
+<msg time="2024-12-06T18:06:09.174443" level="INFO">Transaction 60064f716c05e17a41d5b16580593594eb442ef55c971fe054905b52b52640a3 was successful.</msg>
+<arg>${hash_factorial}</arg>
+<doc>Verifies that each transaction in the list of hashes was successful.</doc>
+<status status="PASS" start="2024-12-06T18:06:09.037304" elapsed="0.137421"/>
+</kw>
+<doc>Deploy and execute the `add` function of the smart contract then check the sum</doc>
+<status status="PASS" start="2024-12-06T18:05:43.149483" elapsed="26.025689"/>
+</test>
+<status status="PASS" start="2024-12-06T18:05:43.043914" elapsed="26.132493"/>
+</suite>
+<status status="PASS" start="2024-12-06T18:05:43.033531" elapsed="26.143797"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
 </tag>
-        <suite>
-            <stat pass="1" fail="0" skip="0" id="s1" name="RobotFrameworkDemo">RobotFrameworkDemo</stat>
-            <stat pass="1" fail="0" skip="0" id="s1-s1" name="Test">RobotFrameworkDemo.Test</stat>
-        </suite>
-    </statistics>
-    <errors>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="RobotFrameworkDemo">RobotFrameworkDemo</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Test">RobotFrameworkDemo.Test</stat>
+</suite>
+</statistics>
+<errors>
 </errors>
 </robot>
